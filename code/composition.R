@@ -1,6 +1,6 @@
 # install.packages('treemapify')
 
-library(tidyverse); library(ggplot2); library(treemapify)
+library(tidyverse); library(treemapify)
 
 # https://www.nass.usda.gov/Quick_Stats/CDQT/chapter/1/table/35/state/IL
 

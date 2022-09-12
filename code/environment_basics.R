@@ -6,7 +6,7 @@
 # install.packages("tidycensus")
 # install.packages("ggpubr")
 
-library(tidyverse); library(ggplot2); library(tigris)
+library(tidyverse); library(tigris)
 
 
 # Import BEA data ---------------------------------------------------------

@@ -1,4 +1,4 @@
-library(tidyverse); library(ggplot2); library(tigris); library(sf)
+library(tidyverse); library(tigris); library(sf)
 
 mfg <- read_csv('data/illinois_mfg21.csv') |> 
   st_as_sf(coords = c("lon","lat"), crs = 4326, remove = F) |> 
@@ -12,12 +12,12 @@ rucc <- read_csv('data/rucc.csv') |>
 
 # Simple histogram --------------------------------------------------------
 
-# ggplot(mfg) +
-  ggplot(mfg |> filter(num_employees <= 100)) +
+ggplot(mfg) +
+  # ggplot(mfg |> filter(num_employees <= 100)) +
   aes(x = num_employees) +
   geom_histogram(stat = 'bin', bins = 100, color = 'black', fill = '#FF5F05') +
-  theme_minimal(base_size = 16, base_family = 'Georgia') +
-  # theme_minimal() +
+  theme_minimal() +
+  # theme_minimal(base_size = 16, base_family = 'Georgia') +
   labs(x = 'Number of Employees', y = 'Number of Establishments', 
        caption = 'Source: Data Axle, 2022',
        title = 'Distribution of Illinois Manufacturing Establishments by Size') +
@@ -35,7 +35,7 @@ ggplot() +
   geom_sf(data = mfg, alpha = .7, size = .4, aes(color = factor(size))) +
   geom_sf(data = il_counties, alpha = 0, color = 'black', size = .2) +
   theme_void() +
-  scale_color_manual(values = c('firebrick','dodgerblue','forestgreen'), name = 'Firm Size')
+  scale_color_manual(values = c('red','dodgerblue','forestgreen'), name = 'Firm Size')
 
 janitor::tabyl(mfg$size)
 
@@ -44,7 +44,7 @@ ggplot() +
           alpha = .7, size = .4, aes(color = factor(size))) +
   geom_sf(data = il_counties, alpha = 0, color = 'black', size = .2) +
   theme_void() +
-  scale_color_manual(values = c('firebrick','dodgerblue','forestgreen'), name = 'Firm Size')
+  scale_color_manual(values = c('red','dodgerblue','forestgreen'), name = 'Firm Size')
 
 # Count number of establishments by county/size ---------------------------
 
@@ -62,6 +62,9 @@ il_cty_mfg <- il_counties |>
   left_join(mfg_county, by = 'GEOID') |> 
   left_join(rucc, by = 'GEOID')
 
+write_csv(mfg_county <- st_intersection(mfg,(il_counties |> select(GEOID))) |> 
+            st_drop_geometry(),'data/il_cty_mfg.csv') # we'll use this later (spatial)
+
 ggplot() +
   geom_sf(data = il_cty_mfg, color = 'black', alpha = .7, size = .2, aes(fill = med_mfg)) +
   theme_void() +
@@ -74,7 +77,7 @@ ggplot() +
 
 # Take metropolitan counties out of the distribution
 ggplot() +
-  geom_sf(data = il_cty_mfg, color = 'white', alpha = 1, fill = '#000004', size = .1) +
+  # geom_sf(data = il_cty_mfg, color = 'white', alpha = 1, fill = '#000004', size = .1) +
   geom_sf(data = il_cty_mfg |> filter(rucc > 3), 
           color = 'white', alpha = 1, size = .2, aes(fill = med_mfg)) +
   theme_void() +
