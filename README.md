@@ -12,5 +12,5 @@ The workshop covers the basics of data visualization in the context of applied e
 * connection
 * location
 
-We also discuss how the R package “ggplot2” can be used to create attractive and efficient data plots to complement applied economic analysis. The demonstrations will feature real-world research and Extension examples from agricultural economics and regional science papers. Code and data are included in this GitHub repository so students can follow along during the workshop and eventually tailor the code for their own research purposes.
+We also discuss how the R package “ggplot2” can be used to create attractive and efficient data plots to complement applied economic analysis. The demonstrations will feature real-world data from agricultural economics and regional science research and Extension. Code and data are included in this GitHub repository so students can follow along during the workshop and eventually tailor the code for their own research purposes.
  
