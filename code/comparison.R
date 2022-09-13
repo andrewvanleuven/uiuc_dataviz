@@ -1,6 +1,3 @@
-# install.packages('lubridate')
-# install.packages('showtext')
-
 library(tidyverse); library(ggplot2); library(lubridate)
 
 # Read in NASS data -------------------------------------------------------

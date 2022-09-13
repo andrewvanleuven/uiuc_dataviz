@@ -5,6 +5,9 @@
 # install.packages("tigris")
 # install.packages("tidycensus")
 # install.packages("ggpubr")
+# install.packages('treemapify')
+# install.packages('lubridate')
+# install.packages('showtext')
 
 library(tidyverse); library(tigris)
 
@@ -29,5 +32,5 @@ bea_data <- data1 |>
   left_join(data2, by = c('geo_fips','geo_name')) |> 
   mutate(gdp_per_capita = round(gdp_15/pop_15,1))
 
-write_csv(bea_data,'data/bea_data.csv')
+# write_csv(bea_data,'data/bea_data.csv') # you don't need to save this (it's already in the folder)
 

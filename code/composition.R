@@ -1,5 +1,3 @@
-# install.packages('treemapify')
-
 library(tidyverse); library(treemapify)
 
 # https://www.nass.usda.gov/Quick_Stats/CDQT/chapter/1/table/35/state/IL
@@ -27,7 +25,7 @@ pal <- c("#ffffb3","#fb8072","#80b1d3","#b3de69","#fccde5","#8dd3c7","#fdb462","
 # https://colorbrewer2.org/#type=qualitative&scheme=Set3&n=8
 
 ggplot(ag_census, aes(area = value, fill = commodity, label = commodity,
-                 subgroup = commodity)) +
+                      subgroup = commodity)) +
   geom_treemap(color = 'black', size = .75) +
   geom_treemap_subgroup_border(color = 'black', size = .5) +
   geom_treemap_subgroup_text(place = "centre", grow = F, alpha = 0.85, colour = "black",
