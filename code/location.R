@@ -83,6 +83,8 @@ ggplot() +
   labs(title = 'Population in Illinois County Seats', 
        caption = 'Source: US Census, 2020')
 
+# just plotting cities in rural counties
+
 ggplot() +
   geom_sf(data = il_spatial, color = 'black', size = .2, alpha = 0) +
   geom_sf(data = city_dots |> filter(cty_seat == 1, rucc > 3), aes(color = value), size = 3) +

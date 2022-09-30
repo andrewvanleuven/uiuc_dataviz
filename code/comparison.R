@@ -71,12 +71,9 @@ ggplot() +
   scale_color_manual(values = c('#BB0000','#13294B','#FC7300'), name = 'Commodity')
 
 
-library(showtext)
-font_add_google("IBM Plex Mono", "gfont"); showtext_auto()
-
 ggplot() +
   geom_line(data = df_ind, aes(x = date, y = index_2, color = commodity), size = 1, alpha = .7) +
-  theme_minimal(base_family = 'gfont') + #, base_size = 32
+  theme_minimal(base_family = 'Courier New') + #, base_size = 32
   labs(x = 'DATE', y = 'PRICE RECEIVED INDEX (1970 = 100)') +
   scale_x_date(breaks = '1 year', labels= scales::date_format("%Y")) +
   scale_color_manual(values = c('#BB0000','#13294B','#FC7300'), name = 'COMMODITY') +
